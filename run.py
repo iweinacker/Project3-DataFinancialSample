@@ -12,8 +12,19 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('financials_sample')
 
-sales = SHEET.worksheet('Financials')
+financials = SHEET.worksheet('financials')
 
-data = sales.get_all_values()
 
-print(data)
+def get_sales_data():
+    """
+    Get sales figures input from the user
+    """
+    print("Please enter sales or expense data from the year that correspond.")
+    print("Data should be positive or negative.")
+    print("Please enter sales data from the actual year.\n")
+
+    data_str = input("Enter your data here: ")
+    print(f"The data provided is {data_str}")
+
+
+get_sales_data()
